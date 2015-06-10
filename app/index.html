@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+
+  <!-- runtime environment configuration -->
+
+  <title>Tutorial 0</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <!--
+    <script src="../components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  -->
+
+  <!-- components -->
+
+  <link href="../components/iron-flex-layout/iron-flex-layout.html" rel="import">
+  <link href="../components/paper-spinner/paper-spinner.html" rel="import">
+
+  <!-- overall look and feel choices here -->
+
+  <link href="src/backgrounds.html" rel="import">
+
+  <style is="custom-style">
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      min-height: 100vh;
+      @apply(--sport-leather);
+      @apply(--layout-vertical);
+    }
+
+    [splash] {
+      color: white;
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+    }
+
+    my-view {
+      @apply(--layout-flex);
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div splash>
+    <span>Loading SPA...</span>
+    <br>
+    <paper-spinner active></paper-spinner>
+  </div>
+
+  <script>
+
+    var t = Date.now() + 1000;
+
+    var go = function() {
+      setTimeout(function() {
+        document.querySelector('paper-spinner').active = false;
+      }, t - Date.now());
+    };
+
+    var Xgo = function() {
+      Polymer.Base.importHref('src/my-view.html', function() {
+        setTimeout(function() {
+          document.querySelector('[splash]').remove();
+          document.body.appendChild(document.createElement('my-view'));
+        }, t - Date.now());
+      });
+    };
+
+    //HTMLImports.whenReady(go);
+    go();
+
+  </script>
+
+</body>
+</html>
