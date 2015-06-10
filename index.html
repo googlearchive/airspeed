@@ -2,22 +2,17 @@
 <html>
 <head>
 
-  <!-- runtime environment configuration -->
+  <!-- environment configuration -->
 
-  <title>Tutorial 0</title>
+  <title>Speedo-1</title>
 
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-  <!--
-    <script src="../components/webcomponentsjs/webcomponents-lite.min.js"></script>
-  -->
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
   <!-- components -->
 
   <link href="components/iron-flex-layout/iron-flex-layout.html" rel="import">
-  <link href="components/paper-spinner/paper-spinner.html" rel="import">
 
   <!-- overall look and feel choices here -->
 
@@ -52,7 +47,6 @@
   <div splash>
     <span>Loading SPA...</span>
     <br>
-    <paper-spinner active></paper-spinner>
   </div>
 
   <script>
@@ -60,13 +54,7 @@
     var t = Date.now() + 1000;
 
     var go = function() {
-      setTimeout(function() {
-        document.querySelector('paper-spinner').active = false;
-      }, t - Date.now());
-    };
-
-    var Xgo = function() {
-      Polymer.Base.importHref('src/my-view.html', function() {
+      Polymer.Base.importHref('src/my-view.min.html', function() {
         setTimeout(function() {
           document.querySelector('[splash]').remove();
           document.body.appendChild(document.createElement('my-view'));
@@ -74,7 +62,6 @@
       });
     };
 
-    //HTMLImports.whenReady(go);
     go();
 
   </script>

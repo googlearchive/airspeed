@@ -1,0 +1,38 @@
+<link href="../components/iron-flex-layout/iron-flex-layout.html" rel="import">
+<link href="../components/iron-icon/iron-icon.html" rel="import">
+<link href="../components/iron-icons/iron-icons.html" rel="import">
+
+<dom-module id="my-view">
+
+  <style>
+
+    :host {
+      display: block;
+      @apply(--layout-vertical);
+    }
+
+    [splash] {
+      color: white;
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+    }
+
+  </style>
+
+  <template>
+
+    <div splash>
+      <span><iron-icon icon="settings"></iron-icon> Hi</span>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+    });
+
+  </script>
+
+</dom-module>
