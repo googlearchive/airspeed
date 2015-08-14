@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Booststrapping Airspeed</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <!-- components -->
+
+  <link href="components/iron-flex-layout/iron-flex-layout.html" rel="import">
+
+  <!-- overall look and feel choices here -->
+
+  <link href="src/backgrounds.html" rel="import">
+
+  <style is="custom-style">
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      min-height: 100vh;
+      @apply(--sport-leather);
+      @apply(--layout-vertical);
+    }
+
+    [splash] {
+      color: white;
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+    }
+
+    my-view {
+      @apply(--layout-flex);
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div splash>
+    <span>Loading SPA...</span>
+    <br>
+  </div>
+
+  <script>
+
+    var t = Date.now() + 1000;
+
+    var go = function() {
+      Polymer.Base.importHref('src/my-view.min.html', function() {
+        setTimeout(function() {
+          document.querySelector('[splash]').remove();
+          document.body.appendChild(document.createElement('my-view'));
+        }, t - Date.now());
+      });
+    };
+
+    window.onload = go;
+
+  </script>
+
+</body>
+</html>
